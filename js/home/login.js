@@ -1,6 +1,6 @@
-define(['jquery'], function($) {
-	$("#form_data").on("submit", function () {
+define(['jquery','jqueryCookie'], function($,undefined) {
 
+	$("#form_data").on("submit", function () {
 
 		$.ajax({
 			url:"/v6/login",
@@ -8,11 +8,12 @@ define(['jquery'], function($) {
 			data:$(this).serialize(),
 			success: function (data) {
 				if (data.code===200){
+					$.cookie('userInfo', JSON.stringify(data.result), {path: '/'});
 					location.href="/";
 				}
 			},
 			error: function () {
-				console.log(data);
+				console.log('error');
 			}
 
 		})
