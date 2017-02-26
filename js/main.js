@@ -5,8 +5,13 @@ requirejs.config({
 		// 第三方库的路径配置
 		jquery: 'lib/jquery/jquery.min',
 		bootstrap: 'lib/bootstrap/js/bootstrap.min',
+		jqueryCookie:'lib/jquery-cookie/jquery.cookie',
 		
 		// 自己写的路径配置
+
+		advertAdd:'js/advert/add',
+		advertList:'js/advert/list',
+
 		courseAdd: 'js/course/add',
 		courseAdd_step1: 'js/course/add_step1',
 		courseAdd_step2: 'js/course/add_step2',
@@ -42,10 +47,15 @@ require(['jquery', 'bootstrap','common']);
  *这里获取页面的pathname，然后对应的加载js。
  * */
 (function(window) {
-	
 	var pathname = window.location.pathname;
-	switch(pathname) {
 
+	switch(pathname) {
+		case '/html/advert/add.html':
+			require(['advertAdd']);
+			break;
+		case '/html/advert/list.html':
+			require(['advertList']);
+			break;
 		case '/html/course/add.html':
 			require(['courseAdd']);
 			break;
