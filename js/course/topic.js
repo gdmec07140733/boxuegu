@@ -1,3 +1,7 @@
-define(['jquery'], function($) {
-	console.log('77')
+define(['jquery','common','nprogress'], function($,undefined,nprogress) {
+
+
+
+
+	nprogress.done();
 });

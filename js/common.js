@@ -4,6 +4,12 @@ define(['jquery','jqueryCookie'], function($,undefined) {
         $(this).next().slideToggle();
     });
 
+
+    var pathname=window.location.pathname;
+
+    $(".navs a").removeClass("active").filter("[href='"+pathname+"']").addClass("active").parents("ul").show();
+
+
     $("#logout").on("click", function () {
 
         $.ajax({
@@ -28,5 +34,7 @@ define(['jquery','jqueryCookie'], function($,undefined) {
     }
 
     $('.aside .profile h4').html(portrait.tc_name?'邱东岳':portrait.tc_name);
-    $('.aside .profile img').attr('src', portrait.tc_avatar? portrait.tc_avatar: '/img/IMG_0564.JPG');
+    $('.aside .avatar img').attr('src', portrait.tc_avatar?  portrait.tc_avatar:'/img/IMG_0564.JPG');
+    //$('.aside .avatar img').attr('src','/img/IMG_0564.JPG');
+
 });

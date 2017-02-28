@@ -6,7 +6,7 @@ requirejs.config({
 		jquery: 'lib/jquery/jquery.min',
 		bootstrap: 'lib/bootstrap/js/bootstrap.min',
 		jqueryCookie:'lib/jquery-cookie/jquery.cookie',
-		
+		nprogress:'lib/nprogress/nprogress',
 		// 自己写的路径配置
 
 		advertAdd:'js/advert/add',
@@ -31,7 +31,8 @@ requirejs.config({
 		userList: 'js/user/list',
 		userProfile: 'js/user/profile',
 
-		common: 'js/common'
+		common: 'js/common',
+		index:'js/index'
 	},
 	shim: {
 		bootstrap: {
@@ -39,6 +40,10 @@ requirejs.config({
 		}
 	}
 });
+
+require(['nprogress'], function (nprogress) {
+	nprogress.start();
+})
 
 // 所有的页面都需要这两个js，先加载他们。
 require(['jquery', 'bootstrap','common']);
@@ -115,6 +120,9 @@ require(['jquery', 'bootstrap','common']);
 				break;
 			case '/html/user/profile.html':
 				require(['userProfile']);
+				break;
+			case '/':
+				require(['index']);
 				break;
 		}
 
