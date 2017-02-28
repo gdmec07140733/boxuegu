@@ -4,6 +4,14 @@ define(['jquery','jqueryCookie'], function($,undefined) {
         $(this).next().slideToggle();
     });
 
+    
+    $(document).on("ajaxStart", function () {
+        $('.overlay').show();
+    }).on("ajaxStop", function () {
+        $('.overlay').hide();
+    });
+
+
 
     var pathname=window.location.pathname;
 
@@ -34,7 +42,7 @@ define(['jquery','jqueryCookie'], function($,undefined) {
     }
 
     $('.aside .profile h4').html(portrait.tc_name?'邱东岳':portrait.tc_name);
-    $('.aside .avatar img').attr('src', portrait.tc_avatar?  portrait.tc_avatar:'/img/IMG_0564.JPG');
+    $('.aside .avatar img').attr('src', portrait.tc_avatar? '/img/IMG_0564.JPG': portrait.tc_avatar);
     //$('.aside .avatar img').attr('src','/img/IMG_0564.JPG');
 
 });

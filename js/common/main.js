@@ -7,6 +7,7 @@ requirejs.config({
 		bootstrap: 'lib/bootstrap/js/bootstrap.min',
 		jqueryCookie:'lib/jquery-cookie/jquery.cookie',
 		nprogress:'lib/nprogress/nprogress',
+		template:'lib/artTemplate/template',
 		// 自己写的路径配置
 
 		advertAdd:'js/advert/add',
@@ -31,7 +32,7 @@ requirejs.config({
 		userList: 'js/user/list',
 		userProfile: 'js/user/profile',
 
-		common: 'js/common',
+		common: 'js/common/common',
 		index:'js/index'
 	},
 	shim: {
