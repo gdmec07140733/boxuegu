@@ -3,25 +3,25 @@ define(['jquery','common','nprogress','template'], function($,undefined,nprogres
 	nprogress.done();
 
 
-	//讲师列表数据缓存
-	var teacher=null;
-
-	try{
-		teacher=JSON.parse(localStorage.getItem('teacher'));
-	}catch(e){}
-
-	//讲师列表请求
-	if(teacher){
-		$("#teacher-list-tbody").html(template("teacher_list",{list:teacher}));
-	}else{
+	////讲师列表数据缓存
+	//var teacher=null;
+    //
+	//try{
+	//	teacher=JSON.parse(localStorage.getItem('teacher'));
+	//}catch(e){}
+    //
+	////讲师列表请求
+	//if(teacher){
+	//	$("#teacher-list-tbody").html(template("teacher_list",{list:teacher}));
+	//}else{
 		$.get("/v6/teacher",function (data) {
 			if(data.code==200){
 
-				localStorage.setItem('teacher',JSON.stringify(data.result));
+				//localStorage.setItem('teacher',JSON.stringify(data.result));
 				$("#teacher-list-tbody").html(template("teacher_list",{list:data.result}));
 			}
 		});
-	}
+	//}
 
 
 
@@ -43,7 +43,7 @@ define(['jquery','common','nprogress','template'], function($,undefined,nprogres
 			type:"post",
 			data:{
 				tc_status:$(this).parent().attr("data-status"),
-				tc_id:$(this).parent().attr("data-id")
+				tc_id:$(this).parent().attr("data-id"),
 			},
 			success: function (data) {
 				if(data.code==200){

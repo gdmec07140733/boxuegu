@@ -8,6 +8,10 @@ requirejs.config({
 		jqueryCookie:'lib/jquery-cookie/jquery.cookie',
 		nprogress:'lib/nprogress/nprogress',
 		template:'lib/artTemplate/template',
+		datepicker:'lib/bootstrap-datepicker/js/bootstrap-datepicker',
+		datepickerZhCN:'lib/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
+
+
 		// 自己写的路径配置
 
 		advertAdd:'js/advert/add',
@@ -33,11 +37,15 @@ requirejs.config({
 		userProfile: 'js/user/profile',
 
 		common: 'js/common/common',
+		util: 'js/common/util',
 		index:'js/index'
 	},
 	shim: {
 		bootstrap: {
 			deps: ['jquery']
+		},
+		datepickerZhCN:{
+			deps: ['jquery','datepicker']
 		}
 	}
 });

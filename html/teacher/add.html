@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>学IT - 后台管理系统</title>
     <?php include('../common/style.html') ?>
+    <link rel="stylesheet" href="/lib/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" />
 </head>
 <body>
     
@@ -21,51 +22,8 @@
                     <li class="active">讲师添加</li>
                 </ol>
                 <div class="teacher-add">
-                    <form  id="teacher-add-form" class="form-horizontal col-xs-offset-2">
-                        <div class="form-group">
-                            <label for="" class="col-xs-3 control-label">姓名</label>
-                            <div class="col-xs-4">
-                                <input type="text" name="tc_name" class="form-control input-sm" placeholder="讲师名称">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="col-xs-3 control-label">密码</label>
-                            <div class="col-xs-4">
-                                <input type="password" name="tc_pass" class="form-control input-sm">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="col-xs-3 control-label">入职时间</label>
-                            <div class="col-xs-4">
-                                <input type="text" name="tc_join_date" class="form-control input-sm" value="2017-3-1">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="col-xs-3 control-label">类型</label>
-                            <div class="col-xs-2">
-                                <select name="tc_type" class="form-control input-sm">
-                                    <option value="1">讲师</option>
-                                    <option value="0">管理员</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="col-xs-3 control-label">性别</label>
-                            <div class="col-xs-4">
-                                <label class="radio-inline">
-                                    <input name="tc_gender"  value="0" type="radio" checked> 男
-                                </label>
-                                <label class="radio-inline">
-                                    <input name="tc_gender" value="1" type="radio"> 女
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-7">
-                                <button type="submit" class="btn btn-success btn-sm pull-right"> 添 加 </button>
-                            </div>                          
-                        </div>
-                    </form>
+
+
                 </div>
             </div>
         </div>
@@ -73,6 +31,82 @@
 
 
 </body>
+
+<script id="teacher-form-edit" type="text/template">
+    <form  id="teacher-add-form" class="form-horizontal col-xs-offset-2">
+        <div class="form-group">
+            <label for="" class="col-xs-3 control-label">姓名</label>
+            <div class="col-xs-4">
+                <input type="text" value="{{ tc_name }}" name="tc_name" class="form-control input-sm" placeholder="讲师名称">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="" class="col-xs-3 control-label">手机</label>
+            <div class="col-xs-4">
+                <input type="text" value="{{ tc_cellphone }}" name="tc_cellphone" class="form-control input-sm" placeholder="手机">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-xs-3 control-label">邮箱</label>
+            <div class="col-xs-4">
+                <input type="text" value="{{ tc_email }}" name="tc_email" class="form-control input-sm" placeholder="邮箱">
+            </div>
+        </div>
+        <!--<div class="form-group">-->
+            <!--<label for="" class="col-xs-3 control-label">年龄</label>-->
+            <!--<div class="col-xs-4">-->
+                <!--<input type="text" value="{{ tc_birthday }}" name="tc_birthday" class="form-control input-sm" placeholder="邮箱">-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="form-group">
+            <label for="" class="col-xs-3 control-label">花名</label>
+            <div class="col-xs-4">
+                <input type="text" value="{{ tc_roster }}" name="tc_roster" class="form-control input-sm" placeholder="花名">
+            </div>
+        </div>
+        {{ if !tc_id }}
+        <div class="form-group">
+            <label for="" class="col-xs-3 control-label">密码</label>
+            <div class="col-xs-4">
+                <input type="password" name="tc_pass" class="form-control input-sm">
+            </div>
+        </div>
+        {{ /if }}
+        <div class="form-group">
+            <label for=""  class="col-xs-3 control-label">入职时间</label>
+            <div class="col-xs-4">
+                <input type="text" id="datepicter" value="{{tc_join_date}}" name="tc_join_date" class="form-control input-sm" value="2017-3-1">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-xs-3 control-label">类型</label>
+            <div class="col-xs-2">
+                <select name="tc_type" class="form-control input-sm">
+                    <option value="1" {{ tc_type==1?'selected':'' }}>讲师</option>
+                    <option value="0" {{ tc_type==0?'selected':'' }}>管理员</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-xs-3 control-label">性别</label>
+            <div class="col-xs-4">
+                <label class="radio-inline">
+                    <input name="tc_gender"  value="0" type="radio" {{ tc_gender==1?'checked':'' }}> 男
+                </label>
+                <label class="radio-inline">
+                    <input name="tc_gender" value="1" type="radio" {{ tc_gender==0?'checked':'' }}> 女
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-7">
+                <button type="submit" class="btn btn-success btn-sm pull-right"> {{ tc_id?'编辑':'添加'}} </button>
+            </div>
+        </div>
+    </form>
+
+</script>
 <?php include('../common/script.html') ?>
 
 </html>
